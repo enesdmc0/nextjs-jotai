@@ -42,3 +42,16 @@ export const clearUserAtom = atom(null, (_, set) => {
     set(ageAtom, "");
     return { success: true, message: "User cleared successfully" };
 })
+
+// Sample - 3
+export const celsiusAtom = atom(25);
+
+export const fahrenheitAtom = atom(
+    (get) => {
+        const celsius = get(celsiusAtom);
+        return (celsius * 9 / 5) + 32;
+    },
+    (get, set, newFahrenheit: number) => {
+        const newCelsius = (newFahrenheit - 32) * 5 / 9;
+        set(celsiusAtom, newCelsius);
+    })
