@@ -55,3 +55,27 @@ export const fahrenheitAtom = atom(
         const newCelsius = (newFahrenheit - 32) * 5 / 9;
         set(celsiusAtom, newCelsius);
     })
+
+
+// Fetch Data
+export const postIdAtom = atom(9001);
+export const postDataAtom = atom(async (get) => {
+    const id = get(postIdAtom);
+    const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+    const data: PostData = await response.json();
+    return data;
+});
+
+type PostData = {
+    by: string;
+    descendants?: number;
+    id: number;
+    kids?: number[];
+    parent: number;
+    score?: number;
+    text?: string;
+    time: number;
+    title?: string;
+    type: "comment" | "story";
+    url?: string;
+};

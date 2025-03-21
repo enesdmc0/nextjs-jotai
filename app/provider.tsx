@@ -1,4 +1,3 @@
-// app/providers.jsx
 "use client";
 import { Provider } from "jotai";
 import { DevTools } from "jotai-devtools";
@@ -10,7 +9,8 @@ interface Props {
 export function JotaiProvider({ children }: Props) {
   return (
     <Provider>
-      {children} <DevTools />
+      {children}
+      <DevTools />
     </Provider>
   );
 }
