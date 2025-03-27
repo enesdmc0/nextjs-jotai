@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-type Payment = {
+export type Book = {
     id: string;
     amount: number;
     status: "pending" | "processing" | "success" | "failed";
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 }
 
 
-const data: Payment[] = [
+const data: Book[] = [
     {
         id: "1",
         amount: 100,
